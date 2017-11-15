@@ -1,4 +1,4 @@
-Anywhere 随启随用的静态文件服务器
+anywhere-auth 随启随用的带有http验证的静态文件服务器
 ==============================
 
 Running static file server anywhere with basic-auth. 随时随地将你的当前目录变成一个带有basic-auth验证的静态文件服务器的根目录。
@@ -33,7 +33,7 @@ $ anywhere-auth -f /index.html
 ## Help
 
 ```sh
-$ anywhere --help
+$ anywhere-auth --help
 Usage:
   anywhere-auth --help // print help information
   anywhere-auth // 8000 as default port, current folder as root
@@ -43,9 +43,9 @@ Usage:
   anywhere-auth -h localhost // localhost as hostname
   anywhere-auth -d /home // /home as root
   anywhere-auth -f /index.html  // Enable html5 history,the index is /index.html
-  anywhere-auth -i // include file of extnames,such as txt,js
-  anywhere -e // exclude file of extnames,such as exe,bat
-  anywhere -o // enable basic auth, /home/pass.txt
+  anywhere-auth -i txt,js // include file of extnames,such as txt,js
+  anywhere-auth -e ext,bat // exclude file of extnames,such as exe,bat
+  anywhere-auth -a /home/pass.txt // enable basic auth, /home/pass.txt
 ```
 
 ## Visit

@@ -49,7 +49,7 @@ if (argv.help) {
   console.log("  anywhere -f // Enable history fallback");
   console.log("  anywhere -i // include file of extnames,such as txt,js");
   console.log("  anywhere -e // exclude file of extnames,such as exe,bat");
-  console.log("  anywhere -o // enable basic auth, /home/pass.txt");
+  console.log("  anywhere -a // enable basic auth, /home/pass.txt");
   process.exit(0);
 }
 
@@ -97,12 +97,12 @@ var app = connect();
 // enable basic auth
 if(argv.auth){
   var auth = require('http-auth');
-  if(!fs.existsSync(argv.oauth)){
+  if(!fs.existsSync(argv.auth)){
     console.log('Basic auth file is not exists');
   }else{
     var basic = auth.basic({
       realm : 'anywhere',
-      file : argv.oauth
+      file : argv.auth
     });
     app.use(auth.connect(basic));
   }

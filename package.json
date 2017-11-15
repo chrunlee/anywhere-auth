@@ -1,0 +1,33 @@
+{
+  "name": "anywhere-auth",
+  "version": "1.0.0",
+  "description": "Run static file server anywhere with basic-auth",
+  "bin": {
+    "anywhere-auth": "./bin/anywhere-auth"
+  },
+  "keywords": [
+    "Static",
+    "file",
+    "server",
+    "Assets",
+    "basic-auth"
+  ],
+  "author": "chrunlee",
+  "license": "MIT",
+  "dependencies": {
+    "connect": "3.1.1",
+    "connect-history-api-fallback": "^1.2.0",
+    "debug": "^2.2.0",
+    "minimist": "~0.1.0",
+    "serve-index": "1.9.1",
+    "serve-static": "1.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:chrunlee/anywhere-auth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chrunlee/anywhere-auth/issues"
+  },
+  "homepage": "https://github.com/chrunlee/anywhere-auth"
+}

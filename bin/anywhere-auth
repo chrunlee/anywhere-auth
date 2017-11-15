@@ -12,7 +12,7 @@ var serveIndex = require('serve-index');
 var fallback = require('connect-history-api-fallback');
 
 var debug = require('debug');
-debug.enable('anywhere');
+debug.enable('anywhere-auth');
 
 var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
@@ -38,18 +38,18 @@ var argv = require("minimist")(process.argv.slice(2), {
 
 if (argv.help) {
   console.log("Usage:");
-  console.log("  anywhere --help // print help information");
-  console.log("  anywhere // 8000 as default port, current folder as root");
-  console.log("  anywhere 8888 // 8888 as port");
-  console.log("  anywhere -p 8989 // 8989 as port");
-  console.log("  anywhere -s // don't open browser");
-  console.log("  anywhere -h localhost // localhost as hostname");
-  console.log("  anywhere -d /home // /home as root");
-  console.log("  anywhere -l // print log");
-  console.log("  anywhere -f // Enable history fallback");
-  console.log("  anywhere -i // include file of extnames,such as txt,js");
-  console.log("  anywhere -e // exclude file of extnames,such as exe,bat");
-  console.log("  anywhere -a // enable basic auth, /home/pass.txt");
+  console.log("  anywhere-auth --help // print help information");
+  console.log("  anywhere-auth // 8000 as default port, current folder as root");
+  console.log("  anywhere-auth 8888 // 8888 as port");
+  console.log("  anywhere-auth -p 8989 // 8989 as port");
+  console.log("  anywhere-auth -s // don't open browser");
+  console.log("  anywhere-auth -h localhost // localhost as hostname");
+  console.log("  anywhere-auth -d /home // /home as root");
+  console.log("  anywhere-auth -l // print log");
+  console.log("  anywhere-auth -f // Enable history fallback");
+  console.log("  anywhere-auth -i // include file of extnames,such as txt,js");
+  console.log("  anywhere-auth -e // exclude file of extnames,such as exe,bat");
+  console.log("  anywhere-auth -a // enable basic auth, /home/pass.txt");
   process.exit(0);
 }
 
@@ -90,7 +90,7 @@ var getIPAddress = function () {
   return ip || "127.0.0.1";
 };
 
-var log = debug('anywhere');
+var log = debug('anywhere-auth');
 
 var app = connect();
 
@@ -101,7 +101,7 @@ if(argv.auth){
     console.log('Basic auth file is not exists');
   }else{
     var basic = auth.basic({
-      realm : 'anywhere',
+      realm : 'anywhere-auth',
       file : argv.auth
     });
     app.use(auth.connect(basic));
@@ -152,11 +152,11 @@ var extFilters = function(fileName,index,list,folderPath){
 app.use(serveStatic(argv.dir, { 'index': ['index.html'] }));
 app.use(serveIndex(argv.dir, { 'icons': true ,filter : extFilters}));
 
-// anywhere 8888
-// anywhere -p 8989
-// anywhere 8888 -s // silent
-// anywhere -h localhost
-// anywhere -d /home
+// anywhere-auth 8888
+// anywhere-auth -p 8989
+// anywhere-auth 8888 -s // silent
+// anywhere-auth -h localhost
+// anywhere-auth -d /home
 var port = parseInt(argv._[0] || argv.port, 10);
 var secure = port + 1;
 

@@ -1,6 +1,6 @@
 {
   "name": "anywhere-auth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Run static file server anywhere with basic-auth",
   "bin": {
     "anywhere-auth": "./bin/anywhere-auth"
@@ -20,7 +20,9 @@
     "debug": "^2.2.0",
     "minimist": "~0.1.0",
     "serve-index": "1.9.1",
-    "serve-static": "1.5.3"
+    "serve-static": "1.5.3",
+    "http-auth":"3.2.3"
+
   },
   "repository": {
     "type": "git",
